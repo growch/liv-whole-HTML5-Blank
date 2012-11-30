@@ -252,12 +252,13 @@ div.mainHome div.hr {
 }
 
 
-div.main div.hr-wide {
+div.main div.hr-wide, div.hr-wide {
 	height: 4px;
 	background: url(../images/main-hr-wide.gif) no-repeat 0 0;
 	overflow: hidden;
 	margin: 30px 0;
 }
+
 /* Updates Table */
 table.updates-table {
 	width: 100%;

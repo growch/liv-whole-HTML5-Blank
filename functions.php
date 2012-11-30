@@ -406,7 +406,7 @@ add_action('wp_footer', 'add_jquery_fallback'); // jQuery fallbacks loaded throu
 add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comments
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
-add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
+// add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 
@@ -608,6 +608,43 @@ function custom_services_init() {
 }
 // happens every time somebody hits wordpress
 add_action( 'init', 'custom_services_init');
+
+// BLAB SECTION
+function custom_blabs_init() {
+  $labels = array(
+    'name' => _x('Blabs', 'post type general name', 'your_text_domain'),
+    'singular_name' => _x('Blab', 'post type singular name', 'your_text_domain'),
+    'add_new' => _x('Add New', 'blab', 'your_text_domain'),
+    'add_new_item' => __('Add New Blab', 'your_text_domain'),
+    'edit_item' => __('Edit Blab', 'your_text_domain'),
+    'new_item' => __('New Blab', 'your_text_domain'),
+    'all_items' => __('All Blabs', 'your_text_domain'),
+    'view_item' => __('View Blab', 'your_text_domain'),
+    'search_items' => __('Search Blab', 'your_text_domain'),
+    'not_found' =>  __('No blabs found', 'your_text_domain'),
+    'not_found_in_trash' => __('No blabs found in Trash', 'your_text_domain'), 
+    'parent_item_colon' => '',
+    'menu_name' => __('Blabs', 'your_text_domain')
+
+  );
+  $args = array(
+    'labels' => $labels,
+    'public' => true,
+    'publicly_queryable' => true,
+    'show_ui' => true, 
+    'show_in_menu' => true, 
+    'query_var' => true,
+    'rewrite' => array( 'slug' => _x( 'blabs', 'URL slug', 'your_text_domain' ) ),
+    'capability_type' => 'post',
+    'has_archive' => false, 
+    'hierarchical' => false,
+    'menu_position' => null,
+    'supports' => array( 'title', 'editor', 'thumbnail', 'page-attributes')
+  ); 
+  register_post_type('liv-whole_blabs', $args);
+}
+// DO IT
+add_action( 'init', 'custom_blabs_init');
 
 /*
  * ========================================================================
